@@ -1,9 +1,18 @@
 const express = require('express');
 const router = express.Router();
+const {
+    getUsers,
+    getUserById,
+    createUser,
+    updateUser,
+    deleteUser
+} = require('../controllers/userController');
 
-// Temporary test route
-router.get('/', (req, res) => {
-    res.send('User routes working!');
-});
+// CRUD routes
+router.get('/', getUsers);          // GET all users
+router.get('/:id', getUserById);    // GET user by ID
+router.post('/', createUser);       // CREATE user
+router.put('/:id', updateUser);     // UPDATE user
+router.delete('/:id', deleteUser);  // DELETE user
 
 module.exports = router;
